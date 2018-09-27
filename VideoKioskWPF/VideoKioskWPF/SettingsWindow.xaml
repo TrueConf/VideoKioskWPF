@@ -1,0 +1,117 @@
+﻿<Window x:Class="VideoKioskWPF.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VideoKioskWPF"
+        mc:Ignorable="d"
+        Title="Settings" Height="500" Width="500"
+        ResizeMode="NoResize" 
+        WindowState="Normal" 
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel>
+            <GroupBox Header="Authorization" Height="Auto" Margin="0,0,0,15">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,15,0,0" VerticalAlignment="Top">
+                        <Label Content="Server" Width="120" HorizontalContentAlignment="Right"/>
+                        <TextBox Name="txtServer" Width="300">
+                            <TextBox.Text>
+                                <Binding Path="Server">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,15,0,0" VerticalAlignment="Top">
+                        <Label Content="Login" Width="120" HorizontalContentAlignment="Right"/>
+                        <TextBox Name="txtLogin" Width="300">
+                            <TextBox.Text>
+                                <Binding Path="Login">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,15,0,0" VerticalAlignment="Top">
+                        <Label Content="Password" Width="120" HorizontalContentAlignment="Right"/>
+                        <PasswordBox Name="txtPassword" Width="300">
+                        </PasswordBox>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Hardware" Height="Auto" Margin="0,0,0,15">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,0,0,5" VerticalAlignment="Top">
+                        <Label Content="Camera index" Width="120" HorizontalContentAlignment="Right"/>
+                        <TextBox Name="txtCamera" Width="300" >
+                            <TextBox.Text>
+                                <Binding Path="Camera">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,0,0,5" VerticalAlignment="Top">
+                        <Label Content="Microphone index" Width="120" HorizontalContentAlignment="Right"/>
+                        <TextBox Name="txtMicrophone" Width="300">
+                            <TextBox.Text>
+                                <Binding Path="Microphone">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,0,0,5" VerticalAlignment="Top">
+                        <Label Content="Speaker index" Width="120" HorizontalContentAlignment="Right"/>
+                        <TextBox Name="txtSpeaker" Width="300">
+                            <TextBox.Text>
+                                <Binding Path="Speaker">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,0,0,5" VerticalAlignment="Top">
+                        <Label Content="Chat timeout" Width="120" HorizontalContentAlignment="Right"/>
+                        <TextBox Name="txtAlertTimeout" Width="300">
+                            <TextBox.Text>
+                                <Binding Path="ChatTimeout">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,0,0,5" VerticalAlignment="Top">
+                        <CheckBox Name="checkBoxLogging" Content="Write log to path" Width="120" HorizontalContentAlignment="Center" Height="26"/>
+                        <TextBox Name="txtLogPath" Width="300" IsEnabled="{Binding ElementName=checkBoxLogging, Path=IsChecked}">
+                            <TextBox.Text>
+                                <Binding Path="LogPath">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <Button x:Name="btnSave" Content="Save" Margin="0,0,50,0" Padding="10,10,10,10" VerticalAlignment="Bottom" Width="120" Click="BtnSave_Click"/>
+            <Button x:Name="btnCancel" Content="Cancel" Padding="10,10,10,10" VerticalAlignment="Bottom" Width="120" Click="BtnCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
