@@ -13,7 +13,6 @@ namespace VideoKioskWPF
     {
         ImageSource _imageBG;
         ImageSource _imageClickBG;
-        SettingCommand _command;
         string _messageHeader;
         string _message;
         public ImageSource ImageBG
@@ -38,18 +37,6 @@ namespace VideoKioskWPF
             {
                 _imageClickBG = value;
                 RaisePropertyChanged("ImageClickBG");
-            }
-        }
-        public SettingCommand SettingsCommand
-        {
-            get
-            {
-                return _command;
-            }
-            set
-            {
-                _command = value;
-                RaisePropertyChanged("SettingsCommand");
             }
         }
         public string MessageHeader
@@ -84,11 +71,10 @@ namespace VideoKioskWPF
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public MainDataContext(SettingsWindow sw)
+        public MainDataContext()
         {
             _imageBG = new BitmapImage(new Uri("pack://application:,,,/Resources/Connecting.png"));
-            _imageClickBG = new BitmapImage(new Uri("pack://application:,,,/Resources/Connecting-click.png"));
-            _command = new SettingCommand(sw);
+            _imageClickBG = new BitmapImage(new Uri("pack://application:,,,/Resources/Connecting-click.png"));            
         }
     }
 }

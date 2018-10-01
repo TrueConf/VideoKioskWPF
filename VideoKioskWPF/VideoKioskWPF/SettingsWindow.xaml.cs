@@ -23,9 +23,11 @@ namespace VideoKioskWPF
     {
         Settings settings;
         XmlSerializer formatter = new XmlSerializer(typeof(Settings));
-        public SettingsWindow()
+
+        public SettingsWindow(EventHandler eventHandler)
         {
             InitializeComponent();
+            Closed += eventHandler;
             LoadLastSettings();
         }
 

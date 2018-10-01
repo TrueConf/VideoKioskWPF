@@ -7,25 +7,31 @@ using System.Windows.Input;
 
 namespace VideoKioskWPF
 {
-    public class SettingCommand : ICommand
+    public class RelayCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;
-        SettingsWindow settingsWindow;
+        private Action<object> execute;
+        private Func<object, bool> canExecute;
 
-        public SettingCommand(SettingsWindow sw)
+        public event EventHandler CanExecuteChanged
         {
-            settingsWindow = sw;
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        {
+            this.execute = execute;
+            this.canExecute = canExecute;
         }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return this.canExecute == null || this.canExecute(parameter);
         }
 
         public void Execute(object parameter)
         {
-            settingsWindow.LoadLastSettings();
-            settingsWindow.ShowDialog();
+            this.execute(parameter);
         }
     }
 }

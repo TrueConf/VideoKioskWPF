@@ -39,14 +39,13 @@ namespace VideoKioskWPF
         {
             InitializeComponent();
 
-            settingsWindow = new SettingsWindow();
-            settingsWindow.Closed += SettingsWindow_Closed;
+            settingsWindow = new SettingsWindow(SettingsWindow_Closed);
 
             CheckCmdLineArgs();
 
-            dataContext = new MainDataContext(settingsWindow);
+            dataContext = new MainDataContext();
             DataContext = dataContext;
-            InputBinding hotkeySettings = new InputBinding(dataContext.SettingsCommand,
+            InputBinding hotkeySettings = new InputBinding(new RelayCommand(c=>OpenSettings(),c=>true),
                 new KeyGesture(Key.F12, ModifierKeys.Shift | ModifierKeys.Control));
             InputBindings.Add(hotkeySettings);
 
@@ -90,6 +89,13 @@ namespace VideoKioskWPF
             tc.OnLogout += Tc_OnLogout;
         }
 
+        private void OpenSettings()
+        {
+            settingsWindow = new SettingsWindow(SettingsWindow_Closed);
+            settingsWindow.LoadLastSettings();
+            settingsWindow.ShowDialog();
+        }
+
         private void Tc_GotFocus(object sender, EventArgs e)
         {
             mainWindow.Focus();
@@ -115,8 +121,7 @@ namespace VideoKioskWPF
             string[] args = Environment.GetCommandLineArgs();
             if (args.Contains("-config") || args.Contains("/config"))
             {
-                settingsWindow.LoadLastSettings();
-                settingsWindow.ShowDialog();
+                OpenSettings();
             }
         }
 
