@@ -8,7 +8,7 @@
         Title="Settings" Height="500" Width="500"
         ResizeMode="NoResize" 
         WindowState="Normal" 
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
     <Grid>
         <StackPanel>
             <GroupBox Header="Authorization" Height="Auto" Margin="0,0,0,15">

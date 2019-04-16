@@ -9,7 +9,7 @@
         Name="mainWindow" ResizeMode="NoResize" 
         WindowState="Maximized" 
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None">
+        WindowStyle="None" ShowInTaskbar="False">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

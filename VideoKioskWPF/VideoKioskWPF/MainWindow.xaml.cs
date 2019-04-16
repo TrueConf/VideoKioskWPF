@@ -87,6 +87,14 @@ namespace VideoKioskWPF
             tc.OnConferenceDeleted += Tc_OnConferenceDeleted;
             tc.OnXChangeState += Tc_OnXChangeState;
             tc.OnLogout += Tc_OnLogout;
+
+            Closing += MainWindow_Closing;
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            tc.shutdown2(true);
+            Application.Current.Shutdown();
         }
 
         private void OpenSettings()
