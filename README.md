@@ -2,13 +2,16 @@
 
 #### Features
 This is the simple application with TrueConf SDK control and button.
+
+Some of its features are similar to [TrueConf Kiosk](https://trueconf.com/products/kiosk.html), a self-service software solution. 
+
 Main features:
 - call to random user from address book by clicking button;
 - shows incoming chat messages on popup with specified display timeout;
 - auto accept all incoming calls and invitations.
 
 #### Settings
-Application also contains the Setting page that is opened by adding command line argument `-config` or using hot keys `Ctrl+Shift+F12`. The Setting page contains the authorization settings(server, login and password), hardware settings (camera, microphone, speakers), chat messages display timeout setting, logging setting.
+Application also contains the Settings page that is opened by adding command line argument `-config` or using hot keys `Ctrl+Shift+F12`. The Settings page contains the authorization settings (server, login and password), hardware settings (camera, microphone, speakers), chat messages display timeout setting, logging setting.
 
 ###### Main page
 ![Video Kiosk Main Page](https://github.com/TrueConf/VideoKioskWPF/blob/master/screenshots/Screenshot_1.png)
